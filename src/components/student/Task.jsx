@@ -34,6 +34,8 @@ function Task() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewTask({ ...newTask, [name]: value });
+    console.log("Input changed:", name, value);
+
   };
 
   const total = tasks.length;
@@ -41,7 +43,7 @@ function Task() {
   const pending = total - completed;
 
   return (
-    <div className="mt-24 fixed w-4/5 right-0 h-screen rounded-2xl p-6 overflow-auto">
+    <div className="mt-24 md:fixed md:w-4/5 w-full right-0 h-screen rounded-2xl p-4 md:p-6 overflow-auto">
       <div className="mb-4">
         <h2 className="text-2xl font-bold">Task Manager</h2>
         <div className="text-sm text-gray-600 mt-2">
@@ -50,23 +52,25 @@ function Task() {
       </div>
 
       {/* Add Task Form */}
-      <div className="bg-white p-4 rounded shadow mb-6">
+      <div className="bg-slate-200 p-4 md:w-3/5 w-[23%] rounded shadow mb-6">
         <input type="text" name="title" value={newTask.title} onChange={handleInputChange} placeholder="Title" className="w-full p-2 mb-2 border rounded" />
         <textarea name="description" value={newTask.description} onChange={handleInputChange} placeholder="Description" className="w-full p-2 mb-2 border rounded" />
-        <div className="flex gap-4 mb-2">
-          <select name="priority" value={newTask.priority} onChange={handleInputChange} className="border p-2 rounded">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-          <input type="date" name="dueDate" value={newTask.dueDate} onChange={handleInputChange}className="border p-2 rounded" />
-          <button onClick={handleAddTask} className="bg-blue-500 text-white px-4 py-2 rounded" >
-            + Add Task
+        <div className="flex flex-col gap-4 mb-2">
+          <div className="flex gap-4 mb-2">
+            <select name="priority" value={newTask.priority} onChange={handleInputChange} className="border p-2 rounded">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+            </select>
+            <input type="date" name="dueDate" value={newTask.dueDate} onChange={handleInputChange}className="border p-2 rounded" />         
+          </div>
+          <button onClick={handleAddTask} className="bg-blue-500 text-white mx-auto px-4 py-2 rounded" >
+            Add Task
           </button>
         </div>
       </div>
       {/* Task List */}
-      <div>
+      <div className="md:w-3/5 w-[23%]">
         {tasks.length === 0 ? (
           <p className="text-center text-gray-400">No tasks yet. Add one!</p>
         ) : (
