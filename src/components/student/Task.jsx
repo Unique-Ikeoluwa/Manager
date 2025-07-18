@@ -52,7 +52,7 @@ function Task() {
       </div>
 
       {/* Add Task Form */}
-      <div className="bg-slate-200 p-4 md:w-3/5 w-[23%] rounded shadow mb-6">
+      <div className="bg-slate-200 p-4 md:w-3/5 w-full rounded shadow mb-6">
         <input type="text" name="title" value={newTask.title} onChange={handleInputChange} placeholder="Title" className="w-full p-2 mb-2 border rounded" />
         <textarea name="description" value={newTask.description} onChange={handleInputChange} placeholder="Description" className="w-full p-2 mb-2 border rounded" />
         <div className="flex flex-col gap-4 mb-2">
@@ -70,7 +70,7 @@ function Task() {
         </div>
       </div>
       {/* Task List */}
-      <div className="md:w-3/5 w-[23%]">
+      <div className="md:w-3/5">
         {tasks.length === 0 ? (
           <p className="text-center text-gray-400">No tasks yet. Add one!</p>
         ) : (
